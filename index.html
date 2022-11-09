@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+  <div class="calculator">
+    <div class="screen" id="screen" ></div>
+    <ul id="buttons" class="buttons">
+        <li><a href="#" data-key="clear">C</a></li>
+        <li><a href="#" data-key="/">÷</a></li>
+        <li><a href="#" data-key="*">X</a></li>    
+        <li><a href="#" data-key="7">7</a></li>
+        <li><a href="#" data-key="8">8</a></li>
+        <li><a href="#" data-key="9">9</a></li>
+        <li><a href="#" data-key="-">-</a></li>
+        <li><a href="#" data-key="4">4</a></li>
+        <li><a href="#" data-key="5">5</a></li>
+        <li><a href="#" data-key="6">6</a></li>
+        <li><a href="#" id="cero" data-key="+">+</a></li>
+        <li><a href="#" data-key="1">1</a></li>
+        <li><a href="#" data-key="2">2</a></li>
+        <li><a href="#" data-key="3">3</a></li>
+        <li><a href="#" id="cero" data-key=" x²">² √</a></li>
+        <li><a href="#" id="cero" data-key=" x³">³ √</a></li>
+        <li><a href="#" data-key="raiz">√</a></li>
+        <li><a href="#" data-key="." class="shift">.</a></li>
+        <li><a href="#" data-key="equal" id="igu" class="equal tall">=</a></li>
+        <li><a href="#" data-key="0" id="cero" class="wide">0</a></li>
+       
+    </ul>
+  </div>
+  </div>
+  
+  <script>
+    let screen = document.getElementById("screen");
+const buttons = document.querySelectorAll("#buttons a");
+
+for (const button of buttons) {
+  button.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    if (e.target.dataset.key == "equal") {
+      screen.textContent = eval(screen.textContent);
+      if (screen.textContent.length > 8) {
+        screen.textContent = eval(screen.textContent).toFixed(8);
+      }
+    } else if (e.target.dataset.key == "clear") {
+      screen.textContent = "";
+    } else if (e.target.dataset.key == ' x²'){
+        screen.textContent = Math.pow(screen.textContent,2);
+    } else if (e.target.dataset.key == ' x³'){
+        screen.textContent = Math.pow(screen.textContent,3);
+    }else if(e.target.dataset.key == 'raiz'){
+        screen.textContent = Math.sqrt(screen.textContent, 2);
+       
+    }
+    else {
+      screen.textContent = screen.textContent + e.target.dataset.key;
+    }
+  });
+
+
+}
+  </script>
+</body>
+<style>
+    .calculator {
+        width: 480px;
+        background-color: #000;
+        height: auto;
+        padding: 10px 0;
+        margin: auto;
+        border-radius: 7px;
+        overflow: hidden;
+        text-align: center;
+         } 
+        .screen {
+         width: 350px;
+         height: 50px;
+         margin: 12px auto 30px;
+        padding: 15px 20px;
+        color: rgb(255, 255, 255);
+        text-align: right;
+        font-size: 3em;
+        letter-spacing: 3px;
+        overflow: hidden;
+        border: #000 1px solid;
+        border-radius: 7px;
+        background-color: #2f2f2f;
+        margin-right: 48px; 
+        }
+            
+         .buttons {
+          padding: 0;
+          width: 423px;
+          margin: auto;
+          overflow: hidden;
+          list-style: none;
+         }    
+        .buttons li {
+         display: inline;
+         float: left;
+         padding: 0px;
+         margin-right: 13px;
+         margin-bottom: 10px;
+        }
+         .buttons li:nth-child(4n) {
+          margin-right: 0;
+         }
+         
+         .buttons a {
+            text-align: center;
+             display: block;
+             width: 90px;
+             height: 25px;
+             padding: 18px 0 12px;
+             color: #000000;
+             background-color: #ffffff;
+             font-family: sans-serif;
+             font-size: 1em;
+             font-weight: 500;
+             letter-spacing: -2px;
+            border: rgb(0, 0, 0) 1px solid;
+            border-radius: 5px;
+            text-align: center;
+          text-decoration: none;
+          text-shadow: #000 0px -1px 0px;
+          box-shadow: inset rgba(255, 255, 255, 0.1) 0px 1px 0px,
+           inset rgba(0, 0, 0, 0.2) 0px -2px 2px;
+         
+          cursor: pointer;
+         }
+         
+         .buttons a:active {
+          box-shadow: inset rgba(0, 0, 0, 0.5) 0px 2px 8px;
+         }
+         
+         .tall {
+            
+          height: 110px !important;
+         }
+         
+         .wide {
+            background-color: #DADCE0 !important;
+          width: 299px !important;
+          margin-top: -79px;
+         }
+         
+         .shift {
+          margin-top: 1px;
+         }
+    
+         #igu{
+            right: -105px;
+            position: relative;
+            text-align: center;
+            background-color: #ff0000;
+         }
+         #creo{
+            background-color: #ffffff !important;
+         }
+</style>
+</html>
